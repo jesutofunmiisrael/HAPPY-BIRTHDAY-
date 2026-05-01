@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday ❤️</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+
+  <div id="hearts-container"></div>
+
+  <div class="container">
+    <div class="card">
+
+      <h1>🎉 Happy Birthday My Love 🎂</h1>
+
+      <p class="message">
+        Today is all about you 💖 <br>
+        You bring so much happiness into my life, and I’m so grateful for you.  
+        May your day be filled with love, laughter, and everything beautiful 🌹
+      </p>
+
+      <div class="images">
+        <img src="./image/img.jpeg" alt="">
+        <img src="./image/WhatsApp Image 2026-05-01 at 14.09.41.jpeg" alt="">
+      </div>
+
+      <div class="video">
+        <video controls>
+          <source src="./video/WhatsApp Video 2026-05-01 at 14.07.07.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <p class="footer">Made with ❤️ just for you</p>
+
+    </div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+
+      document.getElementById("hearts-container").appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
