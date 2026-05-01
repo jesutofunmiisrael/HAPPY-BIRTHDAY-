@@ -4,58 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday ❤️</title>
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
+<div id="hearts-container"></div>
 
-  <div id="hearts-container"></div>
+<!-- 🎵 Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="./music/Edd_Sheeran_-_Perfect_(mp3.pm).mp3" type="audio/mp3">
+</audio>
 
-  <div class="container">
-    <div class="card">
+<div class="container">
+  <div class="card">
 
-      <h1>🎉 Happy Birthday My Love 🎂</h1>
+    <h1>🎉 Happy Birthday My Love 🎂</h1>
+    <h2 class="glow-name">💕 MARYAM 💕</h2>
 
-      <p class="message">
-        Today is all about you 💖 <br>
-        You bring so much happiness into my life, and I’m so grateful for you.  
-        May your day be filled with love, laughter, and everything beautiful 🌹
-      </p>
+    <p class="message">
+      Today is all about you 💖 <br>
+      You bring so much happiness into my life, and I’m so grateful for you.  
+      May your day be filled with love, laughter, and everything beautiful 🌹
+    </p>
 
-      <div class="images">
-        <img src="./image/img.jpeg" alt="">
-        <img src="./image/WhatsApp Image 2026-05-01 at 14.09.41.jpeg" alt="">
-      </div>
-
-      <div class="video">
-        <video controls>
-          <source src="./video/WhatsApp Video 2026-05-01 at 14.07.07.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <p class="footer">Made with ❤️ just for you</p>
-
+    <div class="images">
+      <img src="./image/img.jpeg">
+      <img src="./image/2img.jpeg">
     </div>
+
+    <div class="video">
+      <video controls>
+        <source src="./video/WhatsApp Video 2026-05-01 at 14.07.07.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <p class="footer">Made with ❤️ just for you</p>
+
   </div>
+</div>
 
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💖";
+<script>
+// 💖 Hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
 
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
 
-      document.getElementById("hearts-container").appendChild(heart);
+  document.getElementById("hearts-container").appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    }
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
 
-    setInterval(createHeart, 400);
-  </script>
+
+const music = document.getElementById("bg-music");
+
+function startMusic() {
+  music.volume = 0;
+  music.play().then(() => {
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.4) {
+        vol += 0.02;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 200);
+  }).catch(() => {
+
+    document.body.addEventListener("click", startMusic, { once: true });
+  });
+}
+
+startMusic();
+</script>
 
 </body>
 </html>
